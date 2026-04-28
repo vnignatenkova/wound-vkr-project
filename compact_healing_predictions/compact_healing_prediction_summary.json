@@ -1,0 +1,79 @@
+{
+  "model_path": "compact_healing_model/compact_healing_model.joblib",
+  "input_dataset_path": "feature_pruning_analysis/top8_dataset.csv",
+  "output_predictions_path": "compact_healing_predictions/compact_healing_predictions.csv",
+  "n_rows_total": 51,
+  "n_features_used": 8,
+  "feature_columns": [
+    "wound_perimeter_px_first",
+    "wound_L_mean_first",
+    "suture_zone_L_mean_first",
+    "wound_glcm_energy_first",
+    "suture_zone_glcm_energy_first",
+    "hyperemia_zone_area_pct_wound_first",
+    "wound_glcm_entropy_first",
+    "wound_glcm_homogeneity_first"
+  ],
+  "class_names": [
+    "fast",
+    "medium",
+    "slow"
+  ],
+  "target_column_found": "target_healing_speed_class",
+  "n_rows_with_target_for_evaluation": 51,
+  "metrics_if_target_present": {
+    "accuracy": 0.9803921568627451,
+    "balanced_accuracy": 0.9803921568627452,
+    "f1_macro": 0.9803751803751805,
+    "confusion_matrix": [
+      [
+        17,
+        0,
+        0
+      ],
+      [
+        0,
+        16,
+        1
+      ],
+      [
+        0,
+        0,
+        17
+      ]
+    ],
+    "classification_report": {
+      "fast": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 17.0
+      },
+      "medium": {
+        "precision": 1.0,
+        "recall": 0.9411764705882353,
+        "f1-score": 0.9696969696969697,
+        "support": 17.0
+      },
+      "slow": {
+        "precision": 0.9444444444444444,
+        "recall": 1.0,
+        "f1-score": 0.9714285714285714,
+        "support": 17.0
+      },
+      "accuracy": 0.9803921568627451,
+      "macro avg": {
+        "precision": 0.9814814814814815,
+        "recall": 0.9803921568627452,
+        "f1-score": 0.9803751803751805,
+        "support": 51.0
+      },
+      "weighted avg": {
+        "precision": 0.9814814814814815,
+        "recall": 0.9803921568627451,
+        "f1-score": 0.9803751803751803,
+        "support": 51.0
+      }
+    }
+  }
+}

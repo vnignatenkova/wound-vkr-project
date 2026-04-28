@@ -1,0 +1,5 @@
+_archive_unused/
+*_segmentation_overlays/
+__pycache__/
+*.pyc
+.DS_Store

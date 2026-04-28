@@ -1,0 +1,57 @@
+{
+  "input_table": "wound_forecast_dataset.csv",
+  "target_column": "target_healing_speed_class",
+  "problem_type": "classification",
+  "n_rows": 51,
+  "n_candidate_features": 59,
+  "top_k_saved": 30,
+  "model_metrics": {
+    "problem_type": "classification",
+    "classes": [
+      "fast",
+      "medium",
+      "slow"
+    ],
+    "n_rows": 51,
+    "class_distribution": {
+      "fast": 17,
+      "medium": 17,
+      "slow": 17
+    },
+    "cv_accuracy": 0.39215686274509803,
+    "cv_balanced_accuracy": 0.39215686274509803,
+    "cv_f1_macro": 0.3928868517103812
+  },
+  "top_features": [
+    "wound_perimeter_px_first",
+    "wound_L_mean_first",
+    "suture_zone_L_mean_first",
+    "wound_glcm_energy_first",
+    "suture_zone_glcm_energy_first",
+    "parsed_day_start",
+    "healing_balance_score_first",
+    "hyperemia_zone_area_pct_wound_first",
+    "wound_glcm_entropy_first",
+    "wound_glcm_homogeneity_first",
+    "suture_zone_glcm_entropy_first",
+    "infection_related_proxy_flag_first",
+    "devitalized_area_pct_wound_first",
+    "suture_zone_perimeter_px_first",
+    "deep_damage_proxy_flag_first",
+    "suture_minus_wound_a_mean_first",
+    "suture_zone_glcm_homogeneity_first",
+    "reparative_area_pct_wound_first",
+    "necrosis_zone_area_pct_wound_first",
+    "reparative_proxy_flag_first",
+    "necrosis_zone_present_first",
+    "suture_zone_b_mean_first",
+    "deep_structure_area_pct_wound_first",
+    "wound_area_pct_image_first",
+    "inflammatory_area_pct_wound_first",
+    "wound_area_px_first",
+    "observed_raw_frame_start",
+    "wound_circularity_first",
+    "granulation_zone_present_first",
+    "wound_glcm_contrast_first"
+  ]
+}

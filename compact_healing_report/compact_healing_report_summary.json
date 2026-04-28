@@ -1,0 +1,9 @@
+{
+  "n_rows_detailed": 51,
+  "n_tasks": 51,
+  "predicted_class_distribution": {
+    "slow": 18,
+    "fast": 17,
+    "medium": 16
+  }
+}

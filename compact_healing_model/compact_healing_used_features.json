@@ -1,0 +1,10 @@
+[
+  "wound_perimeter_px_first",
+  "wound_L_mean_first",
+  "suture_zone_L_mean_first",
+  "wound_glcm_energy_first",
+  "suture_zone_glcm_energy_first",
+  "hyperemia_zone_area_pct_wound_first",
+  "wound_glcm_entropy_first",
+  "wound_glcm_homogeneity_first"
+]

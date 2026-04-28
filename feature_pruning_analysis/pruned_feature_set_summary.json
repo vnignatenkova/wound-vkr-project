@@ -1,0 +1,123 @@
+{
+  "source_set_name": "top_visual_only",
+  "target_column": "target_healing_speed_class",
+  "problem_type": "classification",
+  "corr_threshold": 0.85,
+  "results": [
+    {
+      "n_rows": 51,
+      "n_features": 11,
+      "cv_splits": 5,
+      "accuracy": 0.45098039215686275,
+      "balanced_accuracy": 0.45098039215686275,
+      "f1_macro": 0.44635076252723316,
+      "classes": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "feature_set_name": "top_visual_only_full",
+      "features": [
+        "wound_perimeter_px_first",
+        "wound_L_mean_first",
+        "suture_zone_L_mean_first",
+        "wound_glcm_energy_first",
+        "suture_zone_glcm_energy_first",
+        "hyperemia_zone_area_pct_wound_first",
+        "wound_glcm_entropy_first",
+        "wound_glcm_homogeneity_first",
+        "suture_zone_glcm_entropy_first",
+        "devitalized_area_pct_wound_first",
+        "suture_zone_perimeter_px_first"
+      ]
+    },
+    {
+      "n_rows": 51,
+      "n_features": 8,
+      "cv_splits": 5,
+      "accuracy": 0.5098039215686274,
+      "balanced_accuracy": 0.5098039215686274,
+      "f1_macro": 0.5148809523809524,
+      "classes": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "feature_set_name": "top8",
+      "features": [
+        "wound_perimeter_px_first",
+        "wound_L_mean_first",
+        "suture_zone_L_mean_first",
+        "wound_glcm_energy_first",
+        "suture_zone_glcm_energy_first",
+        "hyperemia_zone_area_pct_wound_first",
+        "wound_glcm_entropy_first",
+        "wound_glcm_homogeneity_first"
+      ]
+    },
+    {
+      "n_rows": 51,
+      "n_features": 6,
+      "cv_splits": 5,
+      "accuracy": 0.49019607843137253,
+      "balanced_accuracy": 0.4901960784313726,
+      "f1_macro": 0.4968187820479841,
+      "classes": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "feature_set_name": "top6",
+      "features": [
+        "wound_perimeter_px_first",
+        "wound_L_mean_first",
+        "suture_zone_L_mean_first",
+        "wound_glcm_energy_first",
+        "suture_zone_glcm_energy_first",
+        "hyperemia_zone_area_pct_wound_first"
+      ]
+    },
+    {
+      "n_rows": 51,
+      "n_features": 4,
+      "cv_splits": 5,
+      "accuracy": 0.49019607843137253,
+      "balanced_accuracy": 0.4901960784313726,
+      "f1_macro": 0.4916053574797208,
+      "classes": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "feature_set_name": "top4",
+      "features": [
+        "wound_perimeter_px_first",
+        "wound_L_mean_first",
+        "suture_zone_L_mean_first",
+        "wound_glcm_energy_first"
+      ]
+    },
+    {
+      "n_rows": 51,
+      "n_features": 6,
+      "cv_splits": 5,
+      "accuracy": 0.49019607843137253,
+      "balanced_accuracy": 0.4901960784313726,
+      "f1_macro": 0.4886904761904762,
+      "classes": [
+        "fast",
+        "medium",
+        "slow"
+      ],
+      "feature_set_name": "corr_pruned_0.85",
+      "features": [
+        "wound_perimeter_px_first",
+        "wound_L_mean_first",
+        "wound_glcm_energy_first",
+        "hyperemia_zone_area_pct_wound_first",
+        "wound_glcm_homogeneity_first",
+        "devitalized_area_pct_wound_first"
+      ]
+    }
+  ]
+}

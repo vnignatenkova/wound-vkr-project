@@ -1,0 +1,16 @@
+{
+  "dataset_path": "feature_pruning_analysis/top8_dataset.csv",
+  "features_path": "feature_pruning_analysis/top8_features.json",
+  "target_column": "target_healing_speed_class",
+  "group_column": "task_dir",
+  "n_rows": 51,
+  "n_features": 8,
+  "n_splits": 5,
+  "used_group_cv": true,
+  "classes": [
+    "fast",
+    "medium",
+    "slow"
+  ],
+  "seed": 42
+}
