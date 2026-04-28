@@ -85,7 +85,7 @@ def build_feature_lists(df: pd.DataFrame):
     continuous = []
     binary = []
 
-    # Геометрия по всем зонам: только самое полезное для dynamics
+    # Геометрия по всем зонам
     geom_suffixes = [
         "_area_px",
         "_area_pct_wound",

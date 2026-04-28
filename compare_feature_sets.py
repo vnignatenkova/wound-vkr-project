@@ -20,17 +20,12 @@ from sklearn.metrics import (
 )
 
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
-
 ANALYSIS_DIR = Path("feature_significance_analysis")
 OUTPUT_DIR = Path("feature_set_comparison")
 
 # Сколько top-признаков брать из рейтинга
 TOP_K_USE = 15
 
-# Что считать "подозрительными" не-визуальными признаками
 NON_VISUAL_TOKENS = [
     "parsed_day",
     "day_start",
@@ -45,10 +40,6 @@ NON_VISUAL_TOKENS = [
 
 SEED = 42
 
-
-# ============================================================
-# ЗАГРУЗКА
-# ============================================================
 
 def load_analysis_artifacts():
     summary_path = ANALYSIS_DIR / "analysis_summary.json"
@@ -249,9 +240,6 @@ def prepare_reduced_table(
     return reduced
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

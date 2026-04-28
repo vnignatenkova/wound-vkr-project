@@ -12,33 +12,19 @@ from PIL import Image, ImageDraw
 from skimage import color, measure
 
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
 
 # Запускать из корня датасета: там, где лежат project.json и task_*
 DATASET_ROOT = Path(".")
 
-# Итоговый CSV
 OUTPUT_CSV = DATASET_ROOT / "wound_image_features.csv"
 
-# Минимальное число пикселей маски для вычисления цветовых признаков
 MIN_PIXELS_FOR_COLOR = 25
 
-# Минимальное число пикселей маски для вычисления текстурных признаков
 MIN_PIXELS_FOR_TEXTURE = 50
 
-# Уровни квантования для GLCM
 GLCM_LEVELS = 16
 
-# Использовать EXIF-поворот JPEG.
-# Обычно для таких аннотаций лучше False, иначе маска может "съехать".
 APPLY_EXIF_TRANSPOSE = False
-
-
-# ============================================================
-# КАРТА КЛАССОВ: РУССКОЕ ИМЯ -> БЕЗОПАСНЫЙ АНГЛИЙСКИЙ КЛЮЧ
-# ============================================================
 
 LABEL_MAP = {
     "ВсяРана": "wound",
@@ -60,7 +46,6 @@ LABEL_MAP = {
 }
 
 # Для каких зон считать цвет и текстуру.
-# Технические зоны вроде scale_marker и metal_device обычно не нужны для CIELAB/GLCM.
 COLOR_TEXTURE_LABEL_KEYS = [
     "wound",
     "suture_zone",
@@ -110,9 +95,7 @@ DEVICE_LABELS = [
 ]
 
 
-# ============================================================
-# СЛУЖЕБНЫЕ ФУНКЦИИ
-# ============================================================
+
 
 def natural_task_sort_key(path: Path):
     nums = re.findall(r"\d+", path.name)
@@ -696,9 +679,6 @@ def add_time_and_phase_features(rows: List[dict]) -> List[dict]:
     return rows
 
 
-# ============================================================
-# ОСНОВНАЯ ЛОГИКА ПО ОДНОМУ TASK
-# ============================================================
 
 def process_task(task_dir: Path) -> List[dict]:
     data_dir = find_data_dir(task_dir)
@@ -791,9 +771,6 @@ def process_task(task_dir: Path) -> List[dict]:
     return rows
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
     task_dirs = find_task_dirs(DATASET_ROOT)

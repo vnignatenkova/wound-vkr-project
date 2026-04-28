@@ -15,13 +15,8 @@ from sklearn.metrics import (
 )
 
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
-
 MODEL_PATH = Path("compact_healing_model/compact_healing_model.joblib")
 
-# Можно подать сюда любую таблицу с нужными признаками
 INPUT_DATASET_PATH = Path("feature_pruning_analysis/top8_dataset.csv")
 
 OUTPUT_DIR = Path("compact_healing_predictions")
@@ -32,9 +27,6 @@ OUTPUT_SUMMARY_PATH = OUTPUT_DIR / "compact_healing_prediction_summary.json"
 DEFAULT_TARGET_COLUMN = "target_healing_speed_class"
 
 
-# ============================================================
-# ВСПОМОГАТЕЛЬНОЕ
-# ============================================================
 
 def clean_target_column(df: pd.DataFrame, target_col: str) -> pd.DataFrame:
     if target_col not in df.columns:
@@ -96,9 +88,6 @@ def compute_metrics(y_true_labels, y_pred_labels, class_names):
     return metrics
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

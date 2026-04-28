@@ -50,9 +50,6 @@ N_SPLITS_DEFAULT = 5
 SEED = 42
 
 
-# ============================================================
-# ВСПОМОГАТЕЛЬНОЕ
-# ============================================================
 
 def clean_target_column(df: pd.DataFrame, target_col: str) -> pd.DataFrame:
     if target_col not in df.columns:
@@ -187,10 +184,6 @@ def fit_oof_predictions(
     return oof_pred, fold_metrics, n_splits, used_group_cv
 
 
-# ============================================================
-# MAIN
-# ============================================================
-
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -205,9 +198,7 @@ def main():
 
     groups = df[GROUP_COLUMN] if GROUP_COLUMN in df.columns else None
 
-    # --------------------------------------------------------
-    # OOF: основная модель
-    # --------------------------------------------------------
+
     model_pipeline = build_model()
     oof_pred, fold_metrics, n_splits, used_group_cv = fit_oof_predictions(
         X=X,
@@ -218,9 +209,7 @@ def main():
 
     model_metrics = compute_metrics(y_enc, oof_pred, class_names)
 
-    # --------------------------------------------------------
-    # OOF: dummy baseline
-    # --------------------------------------------------------
+
     cv, _, _ = choose_cv(y_enc, groups)
     dummy_oof = np.empty(len(X), dtype=int)
 
@@ -237,13 +226,10 @@ def main():
 
     dummy_metrics = compute_metrics(y_enc, dummy_oof, class_names)
 
-    # --------------------------------------------------------
-    # Финальная модель на всех данных
-    # --------------------------------------------------------
+
     final_model = build_model()
     final_model.fit(X, y_enc)
 
-    # permutation importance
     perm = permutation_importance(
         final_model,
         X,
@@ -281,9 +267,7 @@ def main():
     oof_df["dummy_pred_class_name"] = le.inverse_transform(dummy_oof)
     oof_df.to_csv(OOF_PATH, index=False, encoding="utf-8-sig")
 
-    # --------------------------------------------------------
-    # Сохранение модели
-    # --------------------------------------------------------
+
     bundle = {
         "model": final_model,
         "label_encoder": le,
@@ -323,9 +307,7 @@ def main():
     with open(METRICS_PATH, "w", encoding="utf-8") as f:
         json.dump(all_metrics, f, ensure_ascii=False, indent=2)
 
-    # --------------------------------------------------------
-    # Вывод
-    # --------------------------------------------------------
+
     print("=== Dummy baseline ===")
     print(f"accuracy            = {dummy_metrics['accuracy']:.4f}")
     print(f"balanced_accuracy   = {dummy_metrics['balanced_accuracy']:.4f}")

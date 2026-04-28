@@ -26,9 +26,6 @@ from sklearn.metrics import (
     mean_absolute_error,
 )
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
 
 INPUT_TABLE = Path("wound_forecast_dataset.csv")
 TARGET_COLUMN = "target_healing_speed_class"
@@ -44,9 +41,6 @@ TOP_K_FINAL = 30
 PREFER_BASELINE_FEATURES = True
 
 
-# ============================================================
-# ПОИСК ВХОДНОЙ ТАБЛИЦЫ И TARGET
-# ============================================================
 
 def find_input_table() -> Path:
     if INPUT_TABLE is not None:
@@ -108,10 +102,6 @@ def detect_problem_type(y: pd.Series) -> str:
         return "regression"
     return "classification"
 
-
-# ============================================================
-# ВЫБОР ПРИЗНАКОВ
-# ============================================================
 
 def has_any_token(name: str, tokens: List[str]) -> bool:
     low = name.lower()
@@ -221,9 +211,6 @@ def choose_feature_columns(df: pd.DataFrame, target_col: str) -> List[str]:
     return sorted(final_cols)
 
 
-# ============================================================
-# UNIVARIATE
-# ============================================================
 
 def run_univariate_classification(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
     le = LabelEncoder()
@@ -274,9 +261,6 @@ def run_univariate_regression(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
     return out
 
 
-# ============================================================
-# MODEL-BASED IMPORTANCE
-# ============================================================
 
 def run_model_classification(X: pd.DataFrame, y: pd.Series) -> Tuple[pd.DataFrame, dict]:
     le = LabelEncoder()
@@ -413,9 +397,6 @@ def run_model_regression(X: pd.DataFrame, y: pd.Series) -> Tuple[pd.DataFrame, d
     return out, metrics
 
 
-# ============================================================
-# ФИНАЛЬНОЕ ОБЪЕДИНЕНИЕ РЕЙТИНГОВ
-# ============================================================
 
 def build_final_ranking(univariate_df: pd.DataFrame, model_df: pd.DataFrame) -> pd.DataFrame:
     merged = univariate_df.merge(model_df, on="feature", how="outer")
@@ -441,9 +422,6 @@ def build_final_ranking(univariate_df: pd.DataFrame, model_df: pd.DataFrame) -> 
     return merged
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

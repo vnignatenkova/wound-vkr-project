@@ -19,9 +19,6 @@ from sklearn.metrics import (
     mean_squared_error,
 )
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
 
 FEATURE_SET_DIR = Path("feature_set_comparison")
 ANALYSIS_DIR = Path("feature_significance_analysis")
@@ -31,10 +28,6 @@ SOURCE_SET_NAME = "top_visual_only"
 CORR_THRESHOLD = 0.85
 SEED = 42
 
-
-# ============================================================
-# ЗАГРУЗКА
-# ============================================================
 
 def load_inputs():
     summary_path = FEATURE_SET_DIR / "feature_set_comparison_summary.json"
@@ -63,9 +56,6 @@ def load_inputs():
     return comparison_summary, dataset, source_features, ranking_df
 
 
-# ============================================================
-# ВСПОМОГАТЕЛЬНОЕ
-# ============================================================
 
 def clean_target_column(df: pd.DataFrame, target_col: str) -> pd.DataFrame:
     if target_col not in df.columns:
@@ -80,9 +70,6 @@ def clean_target_column(df: pd.DataFrame, target_col: str) -> pd.DataFrame:
     return df
 
 
-# ============================================================
-# МОДЕЛИ
-# ============================================================
 
 def build_model(problem_type: str):
     if problem_type == "classification":
@@ -169,9 +156,7 @@ def evaluate_feature_set(X: pd.DataFrame, y: pd.Series, problem_type: str) -> di
     return evaluate_feature_set_regression(X, y)
 
 
-# ============================================================
-# ОТБОР ПО КОРРЕЛЯЦИИ
-# ============================================================
+
 
 def order_features_by_global_ranking(features: List[str], ranking_df: pd.DataFrame) -> List[str]:
     ranking_map = {
@@ -217,9 +202,6 @@ def remove_highly_correlated_features(
     return keep
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)

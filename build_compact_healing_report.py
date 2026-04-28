@@ -6,10 +6,6 @@ import numpy as np
 import pandas as pd
 
 
-# ============================================================
-# НАСТРОЙКИ
-# ============================================================
-
 PREDICTIONS_PATH = Path("compact_healing_predictions/compact_healing_predictions.csv")
 FEATURE_IMPORTANCE_PATH = Path("compact_healing_model/compact_healing_feature_importance.csv")
 USED_FEATURES_PATH = Path("compact_healing_model/compact_healing_used_features.json")
@@ -22,10 +18,6 @@ MARKDOWN_PATH = OUTPUT_DIR / "compact_healing_report.md"
 
 TOP_FEATURES_FOR_EXPLANATION = 3
 
-
-# ============================================================
-# ЧЕЛОВЕКО-ПОНЯТНЫЕ НАЗВАНИЯ ПРИЗНАКОВ
-# ============================================================
 
 FEATURE_RU_MAP = {
     "wound_perimeter_px_first": "периметр раны на первом снимке",
@@ -48,10 +40,6 @@ CLASS_RU_MAP = {
     "slow": "замедленное заживление",
 }
 
-
-# ============================================================
-# ВСПОМОГАТЕЛЬНОЕ
-# ============================================================
 
 def load_inputs():
     if not PREDICTIONS_PATH.exists():
