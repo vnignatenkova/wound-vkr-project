@@ -4,14 +4,10 @@ import re
 from collections import defaultdict
 from PIL import Image, ImageDraw
 
-# Запускать из корневой папки датасета, где лежат task_* и project.json
 DATASET_ROOT = Path(".")
 
-# Более подходящее имя для выходной папки
 OUTPUT_DIR_NAME = "_segmentation_overlays"
 
-# Если True, Pillow применит EXIF-поворот.
-# Для таких аннотаций обычно лучше оставлять False, иначе полигоны могут "съехать".
 APPLY_EXIF_TRANSPOSE = False
 
 
