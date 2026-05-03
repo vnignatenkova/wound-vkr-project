@@ -1,3 +1,5 @@
+from src.config_paths import COMPACT_MODEL_DIR, FEATURE_PRUNING_DIR, COMPACT_PREDICTIONS_DIR, ensure_project_dirs
+from pathlib import Path
 import json
 from typing import Optional
 

@@ -9,6 +9,7 @@ PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
 RESULTS_DIR = PROJECT_ROOT / "results"
 SEGMENTATION_RESULTS_DIR = RESULTS_DIR / "segmentation"
+SEGMENTATION_WARNINGS_LOG = SEGMENTATION_RESULTS_DIR / "segmentation_warnings.log"
 FEATURE_SIGNIFICANCE_DIR = RESULTS_DIR / "feature_significance_analysis"
 FEATURE_SET_COMPARISON_DIR = RESULTS_DIR / "feature_set_comparison"
 FEATURE_PRUNING_DIR = RESULTS_DIR / "feature_pruning_analysis"
@@ -22,8 +23,6 @@ PRACTICE_3P_FIGURES_DIR = PRACTICE_3P_DIR / "figures"
 WOUND_IMAGE_FEATURES_CSV = INTERIM_DATA_DIR / "wound_image_features.csv"
 WOUND_PHASE_DYNAMICS_CSV = INTERIM_DATA_DIR / "wound_phase_dynamics.csv"
 WOUND_FORECAST_DATASET_CSV = PROCESSED_DATA_DIR / "wound_forecast_dataset.csv"
-SEGMENTATION_WARNINGS_LOG = SEGMENTATION_RESULTS_DIR / "segmentation_warnings.log"
-
 
 def ensure_project_dirs() -> None:
     for path in [

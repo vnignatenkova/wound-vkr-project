@@ -1,3 +1,5 @@
+from src.config_paths import FEATURE_SET_COMPARISON_DIR, FEATURE_SIGNIFICANCE_DIR, FEATURE_PRUNING_DIR, ensure_project_dirs
+from pathlib import Path
 import json
 from typing import List, Dict
 
@@ -200,6 +202,7 @@ def remove_highly_correlated_features(
 
 
 def main():
+    ensure_project_dirs()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     comparison_summary, dataset, source_features, ranking_df = load_inputs()

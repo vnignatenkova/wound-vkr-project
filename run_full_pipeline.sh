@@ -10,4 +10,3 @@ python3 -m src.modeling.prune_feature_sets
 python3 -m src.modeling.train_compact_healing_model
 python3 -m src.modeling.predict_compact_healing_model
 python3 -m src.modeling.build_compact_healing_report
-python3 -m src.modeling.build_practice_3p_figures

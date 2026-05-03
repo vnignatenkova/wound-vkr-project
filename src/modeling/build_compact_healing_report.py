@@ -1,3 +1,5 @@
+from src.config_paths import COMPACT_PREDICTIONS_DIR, COMPACT_MODEL_DIR, COMPACT_REPORT_DIR, ensure_project_dirs
+from pathlib import Path
 import json
 from typing import List, Dict, Optional, Tuple
 
@@ -298,6 +300,7 @@ def build_markdown_report(summary_df: pd.DataFrame, detailed_df: pd.DataFrame) -
 # ============================================================
 
 def main():
+    ensure_project_dirs()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     df, fi_df, used_features = load_inputs()

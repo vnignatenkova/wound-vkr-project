@@ -1,7 +1,7 @@
 {
-  "model_path": "compact_healing_model/compact_healing_model.joblib",
-  "input_dataset_path": "feature_pruning_analysis/top8_dataset.csv",
-  "output_predictions_path": "compact_healing_predictions/compact_healing_predictions.csv",
+  "model_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/compact_healing_model/compact_healing_model.joblib",
+  "input_dataset_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/feature_pruning_analysis/top8_dataset.csv",
+  "output_predictions_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/compact_healing_predictions/compact_healing_predictions.csv",
   "n_rows_total": 51,
   "n_features_used": 8,
   "feature_columns": [

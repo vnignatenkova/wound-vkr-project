@@ -1,3 +1,5 @@
+from src.config_paths import FEATURE_SIGNIFICANCE_DIR, FEATURE_SET_COMPARISON_DIR, ensure_project_dirs
+from pathlib import Path
 import json
 from typing import List, Dict
 
@@ -18,9 +20,16 @@ from sklearn.metrics import (
     mean_squared_error,
 )
 
-from src.config_paths import FEATURE_SIGNIFICANCE_DIR as ANALYSIS_DIR, FEATURE_SET_COMPARISON_DIR as OUTPUT_DIR, ensure_project_dirs
-
+from src.config_paths import (
+    FEATURE_SIGNIFICANCE_DIR,
+    FEATURE_SET_COMPARISON_DIR,
+    ensure_project_dirs,
+)
 # Сколько top-признаков брать из рейтинга
+
+ANALYSIS_DIR = FEATURE_SIGNIFICANCE_DIR
+OUTPUT_DIR = FEATURE_SET_COMPARISON_DIR
+
 TOP_K_USE = 15
 
 NON_VISUAL_TOKENS = [
@@ -34,6 +43,7 @@ NON_VISUAL_TOKENS = [
     "healing",
     "progress",
 ]
+
 
 SEED = 42
 
@@ -330,4 +340,5 @@ def main():
 
 
 if __name__ == "__main__":
+    ensure_project_dirs()
     main()

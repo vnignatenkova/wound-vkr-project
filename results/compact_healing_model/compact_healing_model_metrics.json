@@ -1,7 +1,7 @@
 {
   "config": {
-    "dataset_path": "feature_pruning_analysis/top8_dataset.csv",
-    "features_path": "feature_pruning_analysis/top8_features.json",
+    "dataset_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/feature_pruning_analysis/top8_dataset.csv",
+    "features_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/feature_pruning_analysis/top8_features.json",
     "target_column": "target_healing_speed_class",
     "group_column": "task_dir",
     "n_rows": 51,

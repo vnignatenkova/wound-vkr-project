@@ -1,5 +1,5 @@
 {
-  "input_table": "wound_forecast_dataset.csv",
+  "input_table": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/processed/wound_forecast_dataset.csv",
   "target_column": "target_healing_speed_class",
   "problem_type": "classification",
   "top_k_use": 15,

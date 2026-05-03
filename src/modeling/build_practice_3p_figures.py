@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from src.config_paths import PRACTICE_3P_FIGURES_DIR, WOUND_FORECAST_DATASET_CSV, FEATURE_SET_COMPARISON_DIR, FEATURE_PRUNING_DIR, COMPACT_MODEL_DIR, ensure_project_dirs
 import json
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple

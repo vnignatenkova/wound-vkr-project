@@ -1,3 +1,5 @@
+from src.config_paths import WOUND_FORECAST_DATASET_CSV, FEATURE_SIGNIFICANCE_DIR, ensure_project_dirs
+from pathlib import Path
 import json
 import re
 from typing import List, Optional, Tuple
@@ -27,8 +29,6 @@ from sklearn.metrics import (
 
 from src.config_paths import (
     WOUND_FORECAST_DATASET_CSV,
-    WOUND_PHASE_DYNAMICS_CSV,
-    WOUND_IMAGE_FEATURES_CSV,
     FEATURE_SIGNIFICANCE_DIR,
     ensure_project_dirs,
 )
@@ -429,6 +429,7 @@ def build_final_ranking(univariate_df: pd.DataFrame, model_df: pd.DataFrame) -> 
 
 
 def main():
+    ensure_project_dirs()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     input_table = find_input_table()
