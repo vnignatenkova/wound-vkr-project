@@ -1,0 +1,22 @@
+{
+  "n_tasks_total": 241,
+  "n_rows_total": 515,
+  "n_saved_images": 515,
+  "n_skipped_empty_masks": 16,
+  "split_counts": {
+    "train": 380,
+    "test": 72,
+    "val": 63
+  },
+  "task_split_counts": {
+    "train": 169,
+    "val": 36,
+    "test": 36
+  },
+  "image_counts_by_split": {
+    "test": 72,
+    "train": 380,
+    "val": 63
+  },
+  "target_label": "ВсяРана"
+}
