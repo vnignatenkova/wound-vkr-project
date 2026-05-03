@@ -3,3 +3,7 @@ _archive_unused/
 __pycache__/
 *.pyc
 .DS_Store
+# large model weights
+results/segmentation/*.pth
+results/segmentation/*.pt
+results/segmentation/*.ckpt

@@ -1,0 +1,18 @@
+{
+  "device": "mps",
+  "image_size": 256,
+  "batch_size": 8,
+  "epochs": 20,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "threshold": 0.5,
+  "best_val_dice": 0.4996570274233818,
+  "test_loss": 0.10763998246855205,
+  "test_dice": 0.41871265570322674,
+  "test_iou": 0.30827780730194515,
+  "test_precision": 0.45872603687975144,
+  "test_recall": 0.5429511467615763,
+  "n_train": 380,
+  "n_val": 63,
+  "n_test": 72
+}

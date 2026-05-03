@@ -1,0 +1,21 @@
+{
+  "device": "mps",
+  "image_size": 384,
+  "batch_size": 6,
+  "epochs_max": 50,
+  "epochs_trained": 27,
+  "lr": 0.0003,
+  "weight_decay": 0.0001,
+  "pos_weight": 20.0,
+  "best_val_dice": 0.4700221121311188,
+  "best_threshold": 0.7,
+  "best_epoch": 17,
+  "test_loss": 0.710888018210729,
+  "test_dice": 0.42659032344818115,
+  "test_iou": 0.3096177577972412,
+  "test_precision": 0.37130239605903625,
+  "test_recall": 0.6829707026481628,
+  "n_train": 380,
+  "n_val": 63,
+  "n_test": 72
+}
