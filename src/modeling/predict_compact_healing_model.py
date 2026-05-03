@@ -1,4 +1,3 @@
-from pathlib import Path
 import json
 from typing import Optional
 
@@ -14,12 +13,12 @@ from sklearn.metrics import (
     classification_report,
 )
 
+from src.config_paths import COMPACT_MODEL_DIR, FEATURE_PRUNING_DIR, COMPACT_PREDICTIONS_DIR as OUTPUT_DIR, ensure_project_dirs
 
-MODEL_PATH = Path("compact_healing_model/compact_healing_model.joblib")
+MODEL_PATH = COMPACT_MODEL_DIR / "compact_healing_model.joblib"
 
-INPUT_DATASET_PATH = Path("feature_pruning_analysis/top8_dataset.csv")
+INPUT_DATASET_PATH = FEATURE_PRUNING_DIR / "top8_dataset.csv"
 
-OUTPUT_DIR = Path("compact_healing_predictions")
 OUTPUT_PREDICTIONS_PATH = OUTPUT_DIR / "compact_healing_predictions.csv"
 OUTPUT_SUMMARY_PATH = OUTPUT_DIR / "compact_healing_prediction_summary.json"
 
@@ -90,6 +89,7 @@ def compute_metrics(y_true_labels, y_pred_labels, class_names):
 
 
 def main():
+    ensure_project_dirs()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     if not MODEL_PATH.exists():

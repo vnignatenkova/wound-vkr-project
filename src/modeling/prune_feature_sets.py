@@ -1,4 +1,3 @@
-from pathlib import Path
 import json
 from typing import List, Dict
 
@@ -19,10 +18,7 @@ from sklearn.metrics import (
     mean_squared_error,
 )
 
-
-FEATURE_SET_DIR = Path("feature_set_comparison")
-ANALYSIS_DIR = Path("feature_significance_analysis")
-OUTPUT_DIR = Path("feature_pruning_analysis")
+from src.config_paths import FEATURE_SET_COMPARISON_DIR as FEATURE_SET_DIR, FEATURE_SIGNIFICANCE_DIR as ANALYSIS_DIR, FEATURE_PRUNING_DIR as OUTPUT_DIR, ensure_project_dirs
 
 SOURCE_SET_NAME = "top_visual_only"
 CORR_THRESHOLD = 0.85

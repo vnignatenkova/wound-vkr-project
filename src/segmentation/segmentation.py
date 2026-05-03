@@ -1,10 +1,12 @@
-from pathlib import Path
 import json
 import re
 from collections import defaultdict
+from pathlib import Path
 from PIL import Image, ImageDraw
 
-DATASET_ROOT = Path(".")
+from src.config_paths import RAW_DATA_DIR, SEGMENTATION_WARNINGS_LOG, ensure_project_dirs
+
+DATASET_ROOT = RAW_DATA_DIR
 
 OUTPUT_DIR_NAME = "_segmentation_overlays"
 
@@ -217,6 +219,7 @@ def process_task(task_dir: Path):
 
 
 def main():
+    ensure_project_dirs()
     task_dirs = find_task_dirs(DATASET_ROOT)
 
     if not task_dirs:
@@ -246,7 +249,7 @@ def main():
     print(f"Сохранено изображений: {total_images_processed}/{total_images_expected}")
 
     if all_warnings:
-        log_path = DATASET_ROOT / "segmentation_warnings.log"
+        log_path = SEGMENTATION_WARNINGS_LOG
         with open(log_path, "w", encoding="utf-8") as f:
             for line in all_warnings:
                 f.write(line + "\n")

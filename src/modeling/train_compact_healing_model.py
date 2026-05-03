@@ -1,4 +1,3 @@
-from pathlib import Path
 import json
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -28,15 +27,15 @@ from sklearn.metrics import (
 )
 from sklearn.inspection import permutation_importance
 
+from src.config_paths import FEATURE_PRUNING_DIR, COMPACT_MODEL_DIR as OUTPUT_DIR, ensure_project_dirs
 
 # ============================================================
 # НАСТРОЙКИ
 # ============================================================
 
-DATASET_PATH = Path("feature_pruning_analysis/top8_dataset.csv")
-FEATURES_PATH = Path("feature_pruning_analysis/top8_features.json")
+DATASET_PATH = FEATURE_PRUNING_DIR / "top8_dataset.csv"
+FEATURES_PATH = FEATURE_PRUNING_DIR / "top8_features.json"
 
-OUTPUT_DIR = Path("compact_healing_model")
 MODEL_PATH = OUTPUT_DIR / "compact_healing_model.joblib"
 METRICS_PATH = OUTPUT_DIR / "compact_healing_model_metrics.json"
 OOF_PATH = OUTPUT_DIR / "compact_healing_model_oof_predictions.csv"
@@ -185,6 +184,7 @@ def fit_oof_predictions(
 
 
 def main():
+    ensure_project_dirs()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     df, feature_cols = load_inputs()

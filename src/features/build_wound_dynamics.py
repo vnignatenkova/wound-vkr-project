@@ -1,10 +1,10 @@
-from pathlib import Path
 import numpy as np
 import pandas as pd
 
-DATASET_ROOT = Path(".")
-INPUT_CSV = DATASET_ROOT / "wound_image_features.csv"
-OUTPUT_CSV = DATASET_ROOT / "wound_phase_dynamics.csv"
+from src.config_paths import WOUND_IMAGE_FEATURES_CSV, WOUND_PHASE_DYNAMICS_CSV, ensure_project_dirs
+
+INPUT_CSV = WOUND_IMAGE_FEATURES_CSV
+OUTPUT_CSV = WOUND_PHASE_DYNAMICS_CSV
 
 ALL_LABELS = [
     "wound",
@@ -265,6 +265,7 @@ def build_phase_row(g: pd.DataFrame, continuous_cols, binary_cols):
 
 
 def main():
+    ensure_project_dirs()
     if not INPUT_CSV.exists():
         print(f"Не найден входной CSV: {INPUT_CSV}")
         return

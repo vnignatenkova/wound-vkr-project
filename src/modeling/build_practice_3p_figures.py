@@ -7,14 +7,20 @@ from typing import Dict, Iterable, Optional, Tuple
 import matplotlib.pyplot as plt
 import pandas as pd
 
-PROJECT_ROOT = Path(".")
-FIGURES_DIR = PROJECT_ROOT / "practice_3p" / "figures"
+from src.config_paths import (
+    PROJECT_ROOT,
+    PRACTICE_3P_FIGURES_DIR as FIGURES_DIR,
+    WOUND_FORECAST_DATASET_CSV as FORECAST_DATASET,
+    FEATURE_SET_COMPARISON_DIR,
+    FEATURE_PRUNING_DIR,
+    COMPACT_MODEL_DIR,
+    ensure_project_dirs,
+)
 
-FORECAST_DATASET = PROJECT_ROOT / "wound_forecast_dataset.csv"
-FEATURE_SET_METRICS = PROJECT_ROOT / "feature_set_comparison" / "feature_set_comparison_metrics.csv"
-PRUNED_SET_METRICS = PROJECT_ROOT / "feature_pruning_analysis" / "pruned_feature_set_metrics.csv"
-MODEL_METRICS_JSON = PROJECT_ROOT / "compact_healing_model" / "compact_healing_model_metrics.json"
-FEATURE_IMPORTANCE_CSV = PROJECT_ROOT / "compact_healing_model" / "compact_healing_feature_importance.csv"
+FEATURE_SET_METRICS = FEATURE_SET_COMPARISON_DIR / "feature_set_comparison_metrics.csv"
+PRUNED_SET_METRICS = FEATURE_PRUNING_DIR / "pruned_feature_set_metrics.csv"
+MODEL_METRICS_JSON = COMPACT_MODEL_DIR / "compact_healing_model_metrics.json"
+FEATURE_IMPORTANCE_CSV = COMPACT_MODEL_DIR / "compact_healing_feature_importance.csv"
 
 TARGET_COLUMN = "target_healing_speed_class"
 
@@ -281,6 +287,7 @@ def plot_feature_importance_top8(output_path: Path) -> bool:
 
 
 def main() -> None:
+    ensure_project_dirs()
     ensure_dir(FIGURES_DIR)
 
     print(f"Сохраняем графики в: {FIGURES_DIR.resolve()}")

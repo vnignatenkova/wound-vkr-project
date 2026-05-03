@@ -1,4 +1,3 @@
-from pathlib import Path
 import json
 import re
 from typing import List, Optional, Tuple
@@ -26,11 +25,18 @@ from sklearn.metrics import (
     mean_absolute_error,
 )
 
+from src.config_paths import (
+    WOUND_FORECAST_DATASET_CSV,
+    WOUND_PHASE_DYNAMICS_CSV,
+    WOUND_IMAGE_FEATURES_CSV,
+    FEATURE_SIGNIFICANCE_DIR,
+    ensure_project_dirs,
+)
 
-INPUT_TABLE = Path("wound_forecast_dataset.csv")
+INPUT_TABLE = WOUND_FORECAST_DATASET_CSV
 TARGET_COLUMN = "target_healing_speed_class"
 
-OUTPUT_DIR = Path("feature_significance_analysis")
+OUTPUT_DIR = FEATURE_SIGNIFICANCE_DIR
 SEED = 42
 
 MIN_NON_NULL_RATIO = 0.60
@@ -49,10 +55,9 @@ def find_input_table() -> Path:
         return INPUT_TABLE
 
     candidates = [
-        Path("wound_phase_dynamics.csv"),
-        Path("wound_forecast_dataset.csv"),
-        Path("wound_forecast_inference_dataset.csv"),
-        Path("wound_image_features.csv"),
+        WOUND_PHASE_DYNAMICS_CSV,
+        WOUND_FORECAST_DATASET_CSV,
+        WOUND_IMAGE_FEATURES_CSV,
     ]
     for path in candidates:
         if path.exists():

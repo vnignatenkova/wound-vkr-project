@@ -1,16 +1,15 @@
-from pathlib import Path
 import json
 from typing import List, Dict, Optional, Tuple
 
 import numpy as np
 import pandas as pd
 
+from src.config_paths import COMPACT_PREDICTIONS_DIR, COMPACT_MODEL_DIR, COMPACT_REPORT_DIR as OUTPUT_DIR, ensure_project_dirs
 
-PREDICTIONS_PATH = Path("compact_healing_predictions/compact_healing_predictions.csv")
-FEATURE_IMPORTANCE_PATH = Path("compact_healing_model/compact_healing_feature_importance.csv")
-USED_FEATURES_PATH = Path("compact_healing_model/compact_healing_used_features.json")
+PREDICTIONS_PATH = COMPACT_PREDICTIONS_DIR / "compact_healing_predictions.csv"
+FEATURE_IMPORTANCE_PATH = COMPACT_MODEL_DIR / "compact_healing_feature_importance.csv"
+USED_FEATURES_PATH = COMPACT_MODEL_DIR / "compact_healing_used_features.json"
 
-OUTPUT_DIR = Path("compact_healing_report")
 DETAILED_CSV_PATH = OUTPUT_DIR / "compact_healing_report_detailed.csv"
 SUMMARY_CSV_PATH = OUTPUT_DIR / "compact_healing_report_summary.csv"
 SUMMARY_JSON_PATH = OUTPUT_DIR / "compact_healing_report_summary.json"

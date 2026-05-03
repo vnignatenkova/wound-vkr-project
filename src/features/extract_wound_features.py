@@ -11,12 +11,11 @@ import pandas as pd
 from PIL import Image, ImageDraw
 from skimage import color, measure
 
+from src.config_paths import RAW_DATA_DIR, WOUND_IMAGE_FEATURES_CSV, ensure_project_dirs
 
 
-# Запускать из корня датасета: там, где лежат project.json и task_*
-DATASET_ROOT = Path(".")
-
-OUTPUT_CSV = DATASET_ROOT / "wound_image_features.csv"
+DATASET_ROOT = RAW_DATA_DIR
+OUTPUT_CSV = WOUND_IMAGE_FEATURES_CSV
 
 MIN_PIXELS_FOR_COLOR = 25
 
@@ -773,6 +772,7 @@ def process_task(task_dir: Path) -> List[dict]:
 
 
 def main():
+    ensure_project_dirs()
     task_dirs = find_task_dirs(DATASET_ROOT)
     if not task_dirs:
         print("Папки task_* не найдены.")

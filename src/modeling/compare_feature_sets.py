@@ -1,4 +1,3 @@
-from pathlib import Path
 import json
 from typing import List, Dict
 
@@ -19,9 +18,7 @@ from sklearn.metrics import (
     mean_squared_error,
 )
 
-
-ANALYSIS_DIR = Path("feature_significance_analysis")
-OUTPUT_DIR = Path("feature_set_comparison")
+from src.config_paths import FEATURE_SIGNIFICANCE_DIR as ANALYSIS_DIR, FEATURE_SET_COMPARISON_DIR as OUTPUT_DIR, ensure_project_dirs
 
 # Сколько top-признаков брать из рейтинга
 TOP_K_USE = 15
