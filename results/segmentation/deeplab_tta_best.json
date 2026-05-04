@@ -1,0 +1,26 @@
+{
+  "metadata_csv": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/segmentation_dataset_crop_tight/metadata.csv",
+  "model_path": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/segmentation/deeplab_best_model.pth",
+  "image_size": 512,
+  "tta_modes": [
+    "none",
+    "hflip",
+    "vflip",
+    "hvflip"
+  ],
+  "best_on_val": {
+    "threshold": 0.5,
+    "val_dice": 0.7521087173690572,
+    "val_iou": 0.629742477500856,
+    "val_precision": 0.744807414137504,
+    "val_recall": 0.8225285756790794
+  },
+  "test_metrics_with_best_val_threshold": {
+    "dice": 0.7255437393331005,
+    "iou": 0.5916387261946708,
+    "precision": 0.7191610747027853,
+    "recall": 0.8192969170106332
+  },
+  "search_csv": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/segmentation/deeplab_tta_search.csv",
+  "test_per_image_csv": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/results/segmentation/deeplab_tta_test_per_image.csv"
+}

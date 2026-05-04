@@ -24,7 +24,7 @@ SEED = 42
 TRAIN_RATIO = 0.70
 VAL_RATIO = 0.15
 TEST_RATIO = 0.15
-APPLY_EXIF_TRANSPOSE = False
+APPLY_EXIF_TRANSPOSE = True
 
 
 def natural_task_sort_key(path: Path):

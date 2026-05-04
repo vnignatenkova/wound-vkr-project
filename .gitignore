@@ -7,3 +7,21 @@ __pycache__/
 results/segmentation/*.pth
 results/segmentation/*.pt
 results/segmentation/*.ckpt
+
+# Python
+# macOS
+# raw and image data
+data/raw/
+data/segmentation_dataset/images/
+data/segmentation_dataset/masks/
+data/segmentation_dataset_crop/images/
+data/segmentation_dataset_crop/masks/
+data/segmentation_dataset_crop_tight/images/
+data/segmentation_dataset_crop_tight/masks/
+# model weights and binaries
+*.joblib
+# segmentation visual artifacts
+results/segmentation/deeplab_visualizations/
+results/segmentation/dataset_check/gt_overlays/
+results/segmentation/predicted_masks/
+# local archive

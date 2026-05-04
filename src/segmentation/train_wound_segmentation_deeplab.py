@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import json
 import random
 
@@ -18,8 +19,8 @@ from torchvision.models.segmentation import deeplabv3_resnet50
 from src.config_paths import PROJECT_ROOT, ensure_project_dirs
 
 
-SEG_DATASET_DIR = PROJECT_ROOT / "data" / "segmentation_dataset"
-METADATA_CSV = SEG_DATASET_DIR / "metadata.csv"
+SEG_DATASET_DIR = Path(os.environ.get("SEG_DATASET_DIR", str(PROJECT_ROOT / "data" / "segmentation_dataset")))
+METADATA_CSV = Path(os.environ.get("SEG_METADATA_CSV", str(SEG_DATASET_DIR / "metadata.csv")))
 
 RESULTS_DIR = PROJECT_ROOT / "results" / "segmentation"
 BEST_MODEL_PATH = RESULTS_DIR / "deeplab_best_model.pth"
@@ -27,7 +28,7 @@ LAST_MODEL_PATH = RESULTS_DIR / "deeplab_last_model.pth"
 HISTORY_CSV = RESULTS_DIR / "deeplab_train_history.csv"
 METRICS_JSON = RESULTS_DIR / "deeplab_metrics.json"
 
-IMAGE_SIZE = 384
+IMAGE_SIZE = int(os.environ.get("SEG_IMAGE_SIZE", "384"))
 BATCH_SIZE = 4
 EPOCHS = 40
 LR = 3e-4
@@ -114,29 +115,41 @@ class SegmentationDataset(Dataset):
         }
 
 
-class BCEDiceLoss(nn.Module):
-    def __init__(self, pos_weight: float = 1.0, bce_weight: float = 0.5, dice_weight: float = 0.5):
+class BCETverskyLoss(nn.Module):
+    def __init__(self, pos_weight: float = 1.0, bce_weight: float = 0.3, tversky_weight: float = 0.7, alpha: float = 0.7, beta: float = 0.3):
         super().__init__()
         self.register_buffer("pos_weight_tensor", torch.tensor([pos_weight], dtype=torch.float32))
         self.bce_weight = bce_weight
-        self.dice_weight = dice_weight
+        self.tversky_weight = tversky_weight
+        self.alpha = alpha
+        self.beta = beta
 
     def forward(self, logits, targets):
         pos_weight = self.pos_weight_tensor.to(logits.device)
         bce = F.binary_cross_entropy_with_logits(logits, targets, pos_weight=pos_weight)
 
         probs = torch.sigmoid(logits)
-        intersection = (probs * targets).sum(dim=(1, 2, 3))
-        union = probs.sum(dim=(1, 2, 3)) + targets.sum(dim=(1, 2, 3))
-        dice = (2.0 * intersection + 1e-7) / (union + 1e-7)
-        dice_loss = 1.0 - dice.mean()
+        tp = (probs * targets).sum(dim=(1, 2, 3))
+        fp = (probs * (1 - targets)).sum(dim=(1, 2, 3))
+        fn = ((1 - probs) * targets).sum(dim=(1, 2, 3))
 
-        return self.bce_weight * bce + self.dice_weight * dice_loss
+        tversky = (tp + 1e-7) / (tp + self.alpha * fp + self.beta * fn + 1e-7)
+        tversky_loss = 1.0 - tversky.mean()
 
+        return self.bce_weight * bce + self.tversky_weight * tversky_loss
 
 def compute_pos_weight(train_df: pd.DataFrame) -> float:
     pos = float(train_df["mask_area_px"].sum())
-    total = float((train_df["width"] * train_df["height"]).sum())
+
+    if "width" in train_df.columns and "height" in train_df.columns:
+        total = float((train_df["width"] * train_df["height"]).sum())
+    elif "crop_width" in train_df.columns and "crop_height" in train_df.columns:
+        total = float((train_df["crop_width"] * train_df["crop_height"]).sum())
+    elif "orig_width" in train_df.columns and "orig_height" in train_df.columns:
+        total = float((train_df["orig_width"] * train_df["orig_height"]).sum())
+    else:
+        raise KeyError("Не найдены столбцы размеров: width/height или crop_width/crop_height")
+
     neg = max(total - pos, 1.0)
     pos = max(pos, 1.0)
     ratio = neg / pos
@@ -290,12 +303,12 @@ def main():
     val_ds = SegmentationDataset(df, "val", image_size=IMAGE_SIZE, augment=False)
     test_ds = SegmentationDataset(df, "test", image_size=IMAGE_SIZE, augment=False)
 
-    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS)
+    train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS, drop_last=True)
     val_loader = DataLoader(val_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS)
     test_loader = DataLoader(test_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS)
 
     model = build_model().to(device)
-    criterion = BCEDiceLoss(pos_weight=pos_weight, bce_weight=0.5, dice_weight=0.5)
+    criterion = BCETverskyLoss(pos_weight=pos_weight, bce_weight=0.3, tversky_weight=0.7, alpha=0.7, beta=0.3)
     optimizer = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=WEIGHT_DECAY)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer,

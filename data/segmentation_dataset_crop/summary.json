@@ -1,0 +1,19 @@
+{
+  "source_dataset_dir": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/segmentation_dataset",
+  "source_metadata_csv": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/segmentation_dataset/metadata_filtered_small_masks.csv",
+  "crop_dataset_dir": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/segmentation_dataset_crop",
+  "n_rows_total": 506,
+  "n_skipped_empty": 0,
+  "split_counts": {
+    "train": 373,
+    "test": 72,
+    "val": 61
+  },
+  "mask_ratio_mean": 0.06846377430989514,
+  "mask_ratio_median": 0.05499889061318988,
+  "mask_ratio_min": 0.006371869221717936,
+  "mask_ratio_max": 0.31687557727436627,
+  "margin_ratio": 0.25,
+  "min_margin_px": 48,
+  "make_square": true
+}
