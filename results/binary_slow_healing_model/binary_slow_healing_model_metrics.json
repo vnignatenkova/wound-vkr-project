@@ -1,0 +1,496 @@
+{
+  "config": {
+    "input_csv": "/Users/varvaraignatenkova/Desktop/ВКР Игнатенкова/wound_vkr_project/data/processed/wound_forecast_dataset.csv",
+    "target_source_column": "target_healing_speed_class",
+    "target_binary_column": "target_slow_healing_risk",
+    "group_column": "task_dir",
+    "n_rows": 51,
+    "n_features": 67,
+    "classes": [
+      "not_slow",
+      "slow"
+    ],
+    "class_distribution": {
+      "not_slow": 34,
+      "slow": 17
+    },
+    "n_splits": 5,
+    "used_group_cv": true,
+    "seed": 42
+  },
+  "best_model_name": "logistic_regression",
+  "dummy_metrics": {
+    "accuracy": 0.6666666666666666,
+    "balanced_accuracy": 0.5,
+    "f1_macro": 0.4,
+    "confusion_matrix": [
+      [
+        34,
+        0
+      ],
+      [
+        17,
+        0
+      ]
+    ],
+    "classification_report": {
+      "not_slow": {
+        "precision": 0.6666666666666666,
+        "recall": 1.0,
+        "f1-score": 0.8,
+        "support": 34.0
+      },
+      "slow": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 17.0
+      },
+      "accuracy": 0.6666666666666666,
+      "macro avg": {
+        "precision": 0.3333333333333333,
+        "recall": 0.5,
+        "f1-score": 0.4,
+        "support": 51.0
+      },
+      "weighted avg": {
+        "precision": 0.4444444444444444,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.5333333333333334,
+        "support": 51.0
+      }
+    }
+  },
+  "all_model_results": {
+    "logistic_regression": {
+      "metrics": {
+        "accuracy": 0.8627450980392157,
+        "balanced_accuracy": 0.838235294117647,
+        "f1_macro": 0.8432147562582345,
+        "confusion_matrix": [
+          [
+            31,
+            3
+          ],
+          [
+            4,
+            13
+          ]
+        ],
+        "classification_report": {
+          "not_slow": {
+            "precision": 0.8857142857142857,
+            "recall": 0.9117647058823529,
+            "f1-score": 0.8985507246376812,
+            "support": 34.0
+          },
+          "slow": {
+            "precision": 0.8125,
+            "recall": 0.7647058823529411,
+            "f1-score": 0.7878787878787878,
+            "support": 17.0
+          },
+          "accuracy": 0.8627450980392157,
+          "macro avg": {
+            "precision": 0.8491071428571428,
+            "recall": 0.838235294117647,
+            "f1-score": 0.8432147562582345,
+            "support": 51.0
+          },
+          "weighted avg": {
+            "precision": 0.8613095238095237,
+            "recall": 0.8627450980392157,
+            "f1-score": 0.8616600790513834,
+            "support": 51.0
+          }
+        }
+      },
+      "fold_metrics": [
+        {
+          "fold": 1,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.4583333333333333,
+          "f1_macro": 0.45054945054945056
+        },
+        {
+          "fold": 2,
+          "n_train": 40,
+          "n_test": 11,
+          "accuracy": 0.8181818181818182,
+          "balanced_accuracy": 0.8035714285714286,
+          "f1_macro": 0.8035714285714286
+        },
+        {
+          "fold": 3,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "f1_macro": 1.0
+        },
+        {
+          "fold": 4,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "f1_macro": 1.0
+        },
+        {
+          "fold": 5,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "f1_macro": 1.0
+        }
+      ],
+      "n_splits": 5,
+      "used_group_cv": true
+    },
+    "random_forest": {
+      "metrics": {
+        "accuracy": 0.8431372549019608,
+        "balanced_accuracy": 0.7941176470588236,
+        "f1_macro": 0.8111111111111111,
+        "confusion_matrix": [
+          [
+            32,
+            2
+          ],
+          [
+            6,
+            11
+          ]
+        ],
+        "classification_report": {
+          "not_slow": {
+            "precision": 0.8421052631578947,
+            "recall": 0.9411764705882353,
+            "f1-score": 0.8888888888888888,
+            "support": 34.0
+          },
+          "slow": {
+            "precision": 0.8461538461538461,
+            "recall": 0.6470588235294118,
+            "f1-score": 0.7333333333333333,
+            "support": 17.0
+          },
+          "accuracy": 0.8431372549019608,
+          "macro avg": {
+            "precision": 0.8441295546558705,
+            "recall": 0.7941176470588236,
+            "f1-score": 0.8111111111111111,
+            "support": 51.0
+          },
+          "weighted avg": {
+            "precision": 0.8434547908232118,
+            "recall": 0.8431372549019608,
+            "f1-score": 0.8370370370370369,
+            "support": 51.0
+          }
+        }
+      },
+      "fold_metrics": [
+        {
+          "fold": 1,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.6,
+          "balanced_accuracy": 0.5416666666666667,
+          "f1_macro": 0.5238095238095238
+        },
+        {
+          "fold": 2,
+          "n_train": 40,
+          "n_test": 11,
+          "accuracy": 0.7272727272727273,
+          "balanced_accuracy": 0.625,
+          "f1_macro": 0.611764705882353
+        },
+        {
+          "fold": 3,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "f1_macro": 1.0
+        },
+        {
+          "fold": 4,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "f1_macro": 1.0
+        },
+        {
+          "fold": 5,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.9,
+          "balanced_accuracy": 0.9285714285714286,
+          "f1_macro": 0.8901098901098901
+        }
+      ],
+      "n_splits": 5,
+      "used_group_cv": true
+    },
+    "extra_trees": {
+      "metrics": {
+        "accuracy": 0.7450980392156863,
+        "balanced_accuracy": 0.7058823529411764,
+        "f1_macro": 0.7088274044795784,
+        "confusion_matrix": [
+          [
+            28,
+            6
+          ],
+          [
+            7,
+            10
+          ]
+        ],
+        "classification_report": {
+          "not_slow": {
+            "precision": 0.8,
+            "recall": 0.8235294117647058,
+            "f1-score": 0.8115942028985508,
+            "support": 34.0
+          },
+          "slow": {
+            "precision": 0.625,
+            "recall": 0.5882352941176471,
+            "f1-score": 0.6060606060606061,
+            "support": 17.0
+          },
+          "accuracy": 0.7450980392156863,
+          "macro avg": {
+            "precision": 0.7125,
+            "recall": 0.7058823529411764,
+            "f1-score": 0.7088274044795784,
+            "support": 51.0
+          },
+          "weighted avg": {
+            "precision": 0.7416666666666667,
+            "recall": 0.7450980392156863,
+            "f1-score": 0.7430830039525692,
+            "support": 51.0
+          }
+        }
+      },
+      "fold_metrics": [
+        {
+          "fold": 1,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.5,
+          "balanced_accuracy": 0.4583333333333333,
+          "f1_macro": 0.45054945054945056
+        },
+        {
+          "fold": 2,
+          "n_train": 40,
+          "n_test": 11,
+          "accuracy": 0.7272727272727273,
+          "balanced_accuracy": 0.625,
+          "f1_macro": 0.611764705882353
+        },
+        {
+          "fold": 3,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.9,
+          "balanced_accuracy": 0.9444444444444444,
+          "f1_macro": 0.803921568627451
+        },
+        {
+          "fold": 4,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.9,
+          "balanced_accuracy": 0.9,
+          "f1_macro": 0.898989898989899
+        },
+        {
+          "fold": 5,
+          "n_train": 41,
+          "n_test": 10,
+          "accuracy": 0.7,
+          "balanced_accuracy": 0.7857142857142857,
+          "f1_macro": 0.696969696969697
+        }
+      ],
+      "n_splits": 5,
+      "used_group_cv": true
+    }
+  },
+  "best_model_metrics": {
+    "accuracy": 0.8627450980392157,
+    "balanced_accuracy": 0.838235294117647,
+    "f1_macro": 0.8432147562582345,
+    "confusion_matrix": [
+      [
+        31,
+        3
+      ],
+      [
+        4,
+        13
+      ]
+    ],
+    "classification_report": {
+      "not_slow": {
+        "precision": 0.8857142857142857,
+        "recall": 0.9117647058823529,
+        "f1-score": 0.8985507246376812,
+        "support": 34.0
+      },
+      "slow": {
+        "precision": 0.8125,
+        "recall": 0.7647058823529411,
+        "f1-score": 0.7878787878787878,
+        "support": 17.0
+      },
+      "accuracy": 0.8627450980392157,
+      "macro avg": {
+        "precision": 0.8491071428571428,
+        "recall": 0.838235294117647,
+        "f1-score": 0.8432147562582345,
+        "support": 51.0
+      },
+      "weighted avg": {
+        "precision": 0.8613095238095237,
+        "recall": 0.8627450980392157,
+        "f1-score": 0.8616600790513834,
+        "support": 51.0
+      }
+    }
+  },
+  "best_fold_metrics": [
+    {
+      "fold": 1,
+      "n_train": 41,
+      "n_test": 10,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.4583333333333333,
+      "f1_macro": 0.45054945054945056
+    },
+    {
+      "fold": 2,
+      "n_train": 40,
+      "n_test": 11,
+      "accuracy": 0.8181818181818182,
+      "balanced_accuracy": 0.8035714285714286,
+      "f1_macro": 0.8035714285714286
+    },
+    {
+      "fold": 3,
+      "n_train": 41,
+      "n_test": 10,
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1_macro": 1.0
+    },
+    {
+      "fold": 4,
+      "n_train": 41,
+      "n_test": 10,
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1_macro": 1.0
+    },
+    {
+      "fold": 5,
+      "n_train": 41,
+      "n_test": 10,
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1_macro": 1.0
+    }
+  ],
+  "top_feature_importance": [
+    {
+      "feature": "wound_glcm_energy_first",
+      "importance": 0.5534293971004025
+    },
+    {
+      "feature": "suture_zone_glcm_energy_first",
+      "importance": 0.5187349869097028
+    },
+    {
+      "feature": "wound_glcm_entropy_first",
+      "importance": 0.45215901611007797
+    },
+    {
+      "feature": "suture_zone_glcm_entropy_first",
+      "importance": 0.4084687327248631
+    },
+    {
+      "feature": "suture_minus_wound_L_mean_first",
+      "importance": 0.3772215269038404
+    },
+    {
+      "feature": "suture_zone_circularity_first",
+      "importance": 0.372483905850587
+    },
+    {
+      "feature": "observed_raw_frame_start",
+      "importance": 0.36333858309013306
+    },
+    {
+      "feature": "suture_minus_wound_a_mean_first",
+      "importance": 0.3545340428020154
+    },
+    {
+      "feature": "wound_L_mean_first",
+      "importance": 0.32924383069117835
+    },
+    {
+      "feature": "metal_device_present_first",
+      "importance": 0.28948917004577146
+    },
+    {
+      "feature": "suture_zone_L_mean_first",
+      "importance": 0.2881288047867723
+    },
+    {
+      "feature": "wound_circularity_first",
+      "importance": 0.27584963182262373
+    },
+    {
+      "feature": "inflammatory_area_pct_wound_first",
+      "importance": 0.24736022170460395
+    },
+    {
+      "feature": "suture_minus_wound_b_mean_first",
+      "importance": 0.22344673133090356
+    },
+    {
+      "feature": "hyperemia_zone_area_pct_wound_first",
+      "importance": 0.21960769281464398
+    },
+    {
+      "feature": "purulent_discharge_area_pct_wound_first",
+      "importance": 0.19316656998622378
+    },
+    {
+      "feature": "purulent_discharge_present_first",
+      "importance": 0.19316656998622375
+    },
+    {
+      "feature": "healing_balance_score_first",
+      "importance": 0.1861805820909416
+    },
+    {
+      "feature": "parsed_day_start",
+      "importance": 0.18546289155267745
+    },
+    {
+      "feature": "reparative_area_pct_wound_first",
+      "importance": 0.18360594285340107
+    }
+  ]
+}
